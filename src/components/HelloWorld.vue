@@ -1,37 +1,55 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>
-      For guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://github.com/vuejs/vue-cli/tree/dev/docs" target="_blank">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org/en/essentials/getting-started.html" target="_blank">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org/en/intro.html" target="_blank">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org/en" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <list v-bind:items="items"  :text="text"></List>
   </div>
 </template>
 
 <script>
+import List from './List'
+
+import Chess from 'chess.js';
+var chess = new Chess();
+
+const game = `[Event "Chess Olympiad"]
+[Site "Istanbul TUR"]
+[Date "2012.09.06"]
+[EventDate "2012.08.28"]
+[Round "9.2"]
+[Result "1-0"]
+[White "Ding Liren"]
+[Black "Oliver Barbosa"]
+[ECO "D16"]
+[WhiteElo "2695"]
+[BlackElo "2554"]
+[PlyCount "51"]
+
+1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. Nc3 dxc4 5. a4 e6 6. e4 Bb4
+7. e5 Nd5 8. Bd2 a5 9. Bxc4 Be7 10. h4 h6 11. h5 Na6 12. Ne4
+Nab4 13. Rh3 b6 14. Rg3 Bf8 15. Kf1 Qd7 16. Qe2 Bb7 17. Nd6+
+Bxd6 18. exd6 Qxd6 19. Ne5 Rg8 20. Bxh6 f6 21. Bxg7 fxe5
+22. h6 O-O-O 23. h7 Rxg7 24. Rxg7 exd4 25. Rg8 Qh2 26. h8=Q
+1-0`;
+
+chess.load_pgn(game);
+
+// chess.move('e4');
+// chess.move('e5');
+// chess.move('f4');
+ console.log(chess.fen());
+// var board = chess.board();
+// console.log(board);
+
 export default {
   name: 'HelloWorld',
+  components: {List},
+  data ()  {
+    return {items: [
+      { name: 'Foo', id:123 },
+      { name: 'Bar', id:234 }
+    ],
+    text:"err"}
+  },
   props: {
     msg: String
   }

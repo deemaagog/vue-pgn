@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "chess.js": "github:jhlywa/chess.js",
     "vue": "^2.5.13"
   },
   "devDependencies": {
