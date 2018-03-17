@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <Board v-bind:position="position"/>
+    <Notation v-bind="{history, currentMove, goToMove}"/>
   </div>
 </template>
 
 <script>
-import Board from './components/Board.vue'
-
-import Chess from 'chess.js';
+import Board from "./components/Board.vue";
+import Notation from "./components/Notation.vue"
+import Chess from "chess.js";
 var chess = new Chess();
 
 const game = `[Event "Chess Olympiad"]
@@ -31,27 +32,38 @@ Bxd6 18. exd6 Qxd6 19. Ne5 Rg8 20. Bxh6 f6 21. Bxg7 fxe5
 1-0`;
 
 chess.load_pgn(game);
-console.log(chess.board())
-console.log(chess.history())
+console.log(chess.board());
+console.log(chess.history());
 
 export default {
-  name: 'app',
-  data ()  {
+  name: "app",
+  data() {
     return {
       currentMove: 0,
       position: chess.board(),
       history: chess.history()
-    }
+    };
   },
   components: {
-    Board
+    Board,
+    Notation
+  },
+  methods: {
+    goToMove(moveIndex) {
+      this.currentMove = moveIndex;
+      chess.reset();
+      for (let n = 0; n < moveIndex; n++) {
+        chess.move(this.history[n]);
+      }
+      this.position = chess.board();
+    }
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
