@@ -1,12 +1,12 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <list v-bind:items="items"  :text="text"></List>
+    <board v-bind:items="items"  :text="text"></board>
   </div>
 </template>
 
 <script>
-import List from './List'
+import Board from './Board'
 
 import Chess from 'chess.js';
 var chess = new Chess();
@@ -42,7 +42,7 @@ chess.load_pgn(game);
 
 export default {
   name: 'HelloWorld',
-  components: {List},
+  components: {Board},
   data ()  {
     return {items: [
       { name: 'Foo', id:123 },
