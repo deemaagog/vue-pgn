@@ -7,7 +7,7 @@
 
 <script>
 import Board from "./components/Board.vue";
-import Notation from "./components/Notation.vue"
+import Notation from "./components/Notation.vue";
 import Chess from "chess.js";
 var chess = new Chess();
 
@@ -34,6 +34,12 @@ Bxd6 18. exd6 Qxd6 19. Ne5 Rg8 20. Bxh6 f6 21. Bxg7 fxe5
 chess.load_pgn(game);
 console.log(chess.board());
 console.log(chess.history());
+console.log(chess.header());
+
+// let p = [],
+//   copy = chess.history();
+// while (copy.length > 0) p.push(copy.splice(0, 2));
+// console.log(p);
 
 export default {
   name: "app",

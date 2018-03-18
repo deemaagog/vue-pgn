@@ -1,24 +1,36 @@
 <template>
   <div class="notation">
-    <span class = "move"
-      v-for="(move,index) in history" 
-      :key=index  
-      @click="goToMove(index + 1)"
-    >{{move}}    
-    </span>
+    <div class = "movePair"  v-for="(pair,pInd) in movePairs" :key=pInd>
+      <span>{{pInd + 1}}. </span>  
+      <span class = "move"
+      v-for="(move,mInd) in pair" 
+      :key=mInd
+      :class="{ current: currentMove === (pInd * 2 + mInd + 1)}"  
+      @click="goToMove(pInd * 2 + mInd + 1)"> {{move}} 
+      </span>
+      
+    </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Notation',
+  name: "Notation",
   props: {
     history: Array,
     currentMove: Number,
     goToMove: Function
+  },
+  computed: {
+    movePairs() {
+      let p = [],
+        copy = [...this.history];
+      while (copy.length > 0) p.push(copy.splice(0, 2));
+      console.log(p)
+      return p;
+    }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -46,8 +58,12 @@ a {
 .move {
   cursor: pointer;
 }
-.current{
-  
-}
 
+.movePair {
+  float: left;
+  margin-right: 4px;
+}
+.current {
+  font-weight: bold
+}
 </style>
