@@ -1,42 +1,57 @@
 {
-  "name": "simple-vue",
+  "name": "vue-pgn",
+  "description": "A Vue.js component for browsing chess games in pgn format",
   "version": "0.1.0",
-  "private": true,
+  "author": {
+    "name": "deemaagog",
+    "email": "deemaagog@gmail.com"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "chess",
+    "pgn"
+  ],
+  "license": "MIT",
+  "main": "dist/vue-pgn.common.js",
+  "unpkg": "dist/vue-pgn.browser.js",
+  "module": "index.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "cross-env NODE_ENV=development webpack --config config/webpack.config.dev.js --progress --watch",
+    "build": "npm run build:browser && npm run build:common",
+    "build:browser": "cross-env NODE_ENV=production webpack --config config/webpack.config.browser.js --progress --hide-modules",
+    "build:common": "cross-env NODE_ENV=production webpack --config config/webpack.config.common.js --progress --hide-modules",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deemaagog/vue-pgn.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deemaagog/vue-pgn/issues"
+  },
+  "homepage": "https://github.com/deemaagog/vue-pgn#readme",
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.0.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "cross-env": "^3.1.3",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.12.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-html": "^1.6.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "vue-loader": "^10.0.0",
+    "vue-template-compiler": "^2.1.6",
+    "webpack": "^2.1.0-beta.28",
+    "webpack-merge": "^1.1.2"
   },
   "dependencies": {
-    "chess.js": "github:jhlywa/chess.js",
-    "vue": "^2.5.13"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.6",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.6",
-    "@vue/cli-service": "^3.0.0-beta.6",
-    "vue-template-compiler": "^2.5.13"
-  },
-  "babel": {
-    "presets": [
-      "@vue/app"
-    ]
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ]
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "chess.js": "github:jhlywa/chess.js"
+  }
 }

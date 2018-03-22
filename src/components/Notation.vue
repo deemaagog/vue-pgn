@@ -1,5 +1,5 @@
 <template>
-  <div class="notation">
+  <div class="notation" v-bind:style="notationStyle()">
     <div class="moves">
       <div class = "wrapper">
         <template   v-for="(pair,pInd) in movePairs" >
@@ -25,18 +25,27 @@
 
 <script>
 export default {
-  name: "Notation",
+  name: 'Notation',
   props: {
     history: Array,
     currentMove: Number,
-    goToMove: Function
+    goToMove: Function,
+    height: Number
   },
   computed: {
-    movePairs() {
-      let p = [],
-        copy = [...this.history];
+    movePairs () {
+      let p = []
+      let copy = [...this.history]
       while (copy.length > 0) p.push(copy.splice(0, 2));
       return p;
+    }
+  },
+  methods: {
+    notationStyle () {
+      return {
+        height: `${this.height}px`,
+        maxHeight: `${this.height}px`,
+      };
     }
   }
 };
@@ -44,10 +53,7 @@ export default {
 
 <style scoped>
 .notation {
-  height: 400px;
-  /* width: 400px; */
   width: 100%;
-  max-height: 400px;
   display: flex;
   flex-direction: column;
 }
@@ -71,6 +77,7 @@ export default {
   overflow: auto;
   flex: 0 0 85%;
 }
+
 .button {
   width: 40px;
   height: 75%;
