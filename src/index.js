@@ -1,14 +1,14 @@
-import pgnViewer from './components/App.vue'
+import VuePgn from './components/App.vue'
 
 // Install the components
 export function install (Vue) {
-  Vue.component('pgnViewer', pgnViewer)
+  Vue.component('VuePgn', VuePgn)
   /* -- Add more components here -- */
 }
 
 // Expose the components
 export {
-  pgnViewer,
+  VuePgn,
   /* -- Add more components here -- */
 }
 
