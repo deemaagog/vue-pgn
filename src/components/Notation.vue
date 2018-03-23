@@ -104,5 +104,6 @@ export default {
   background-color: #f3f3f3;
   display: flex;
   justify-content: center;
+  height: 100%;
 }
 </style>
