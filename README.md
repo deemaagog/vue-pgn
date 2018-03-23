@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-  <div class="hello">    
+  <div>    
     <VuePgn v-bind="{pgn,height}"/>
   </div>
 </template>
@@ -50,7 +50,7 @@ export default {
 
 ```html
 <div id="app">
-  <VuePgn v-bind="{pgn,height}"></VuePgn>
+  <vuepgn v-bind="{pgn,height}"></vuepgn>
 </div>
 
 <link rel="stylesheet" href="vue-pgn/dist/vue-pgn.css"/>

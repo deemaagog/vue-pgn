@@ -1,14 +1,14 @@
-import VuePgn from './components/App.vue'
+import vuepgn from './components/App.vue'
 
 // Install the components
 export function install (Vue) {
-  Vue.component('VuePgn', VuePgn)
+  Vue.component('vuepgn', vuepgn)
   /* -- Add more components here -- */
 }
 
 // Expose the components
 export {
-  VuePgn,
+  vuepgn,
   /* -- Add more components here -- */
 }
 

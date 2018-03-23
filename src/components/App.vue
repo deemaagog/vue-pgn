@@ -11,6 +11,7 @@ import Notation from './Notation.vue'
 import Chess from 'chess.js'
 
 export default {
+  name: 'vuepgn',
   data () {
     return {
       currentMove: 0,
