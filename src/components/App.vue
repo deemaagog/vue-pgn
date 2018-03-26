@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import Board from "./Board.vue";
-import Notation from "./Notation.vue";
-import Chess from "chess.js";
+import Board from './Board.vue';
+import Notation from './Notation.vue';
+import Chess from 'chess.js';
 
 export default {
-  name: "vuepgn",
-  data() {
+  name: 'vuepgn',
+  data () {
     return {
       currentMove: 0,
       position: [],
@@ -21,7 +21,7 @@ export default {
   },
   props: {
     pgn: {
-      default: "",
+      default: '',
       type: String
     },
     height: {
@@ -34,7 +34,7 @@ export default {
     Notation
   },
   methods: {
-    goToMove(moveIndex) {
+    goToMove (moveIndex) {
       if (moveIndex < 0 || moveIndex > this.history.length) return;
       this.currentMove = moveIndex;
       this.game.reset();
@@ -42,15 +42,21 @@ export default {
         this.game.move(this.history[n]);
       }
       this.position = this.game.board();
+    },
+    loadPgn () {
+      this.game.load_pgn(this.pgn);
+      this.history = this.game.history();
+      this.game.reset();
+      this.position = this.game.board();
     }
   },
-  mounted() {
-    this.game.load_pgn(this.pgn);
-    this.history = this.game.history();
-    this.game.reset();
-    this.position = this.game.board();
+  mounted () {
+    this.loadPgn()
   },
-  created() {
+  updated () {
+    this.loadPgn()
+  },
+  created () {
     this.game = new Chess();
   }
 };

@@ -22,11 +22,11 @@ npm install --save vue-pgn
 
 
 ```javascript
-import {VuePgn} from 'vue-pgn'
+import {vuepgn} from 'vue-pgn'
 import 'vue-pgn/dist/vue-pgn.css'
 
 export default {
-  components: {VuePgn},
+  components: {vuepgn},
   data() {
     return {
       pgn: '1. g4 e5 2. f4 Qh4',
@@ -38,7 +38,7 @@ export default {
 
 <template>
   <div>    
-    <VuePgn v-bind="{pgn,height}"/>
+    <vuepgn v-bind="{pgn,height}"/>
   </div>
 </template>
 
