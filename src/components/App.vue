@@ -33,6 +33,12 @@ export default {
     Board,
     Notation
   },
+  watch: {
+    pgn: function () {
+      this.currentMove = 0
+      this.loadPgn()
+    }
+  },
   methods: {
     goToMove (moveIndex) {
       if (moveIndex < 0 || moveIndex > this.history.length) return;
@@ -51,9 +57,6 @@ export default {
     }
   },
   mounted () {
-    this.loadPgn()
-  },
-  updated () {
     this.loadPgn()
   },
   created () {

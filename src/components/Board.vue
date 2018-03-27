@@ -78,7 +78,7 @@ export default {
   height: 12.5%;
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 90%;
+  background-size: 95%;
 }
 
 .bb {

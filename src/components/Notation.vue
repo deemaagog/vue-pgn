@@ -1,7 +1,7 @@
 <template>
   <div class="notation" v-bind:style="notationStyle()">
     <div class="moves">
-      <div class = "wrapper">
+      <div class = "moves-wrapper">
         <template   v-for="(pair,pInd) in movePairs" >
           <span class = "move"
           v-for="(move,mInd) in pair" 
@@ -95,7 +95,7 @@ export default {
   color: rgb(90, 90, 90);
   font-weight: bold;
 }
-.wrapper {
+.moves-wrapper {
   padding: 10px;
 }
 
