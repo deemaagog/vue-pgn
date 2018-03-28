@@ -21,7 +21,8 @@
     "build": "npm run build:browser && npm run build:common",
     "build:browser": "cross-env NODE_ENV=production webpack --config config/webpack.config.browser.js --progress --hide-modules",
     "build:common": "cross-env NODE_ENV=production webpack --config config/webpack.config.common.js --progress --hide-modules",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "deploy": "gh-pages -d demo"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "gh-pages": "^1.1.0",
     "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.6",
     "webpack": "^2.1.0-beta.28",
